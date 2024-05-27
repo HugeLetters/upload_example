@@ -8,7 +8,6 @@ defmodule UploadExample.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      UploadExampleWeb.Telemetry,
       {DNSCluster, query: Application.get_env(:upload_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: UploadExample.PubSub},
       # Start a worker by calling: UploadExample.Worker.start_link(arg)
