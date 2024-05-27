@@ -21,7 +21,7 @@ defmodule UploadExampleWeb.AudioRecorder do
   end
 
   def handle_event("save", _params, socket) do
-    # It's aware of the new entry but it wasn't awaited even though it's a regular submit even
+    # It's aware of the new entry but it wasn't awaited even though it's a regular submit event
     socket.assigns.uploads.audio.entries |> IO.inspect()
 
     {:noreply, socket |> assign(recording?: false)}
