@@ -3,8 +3,10 @@ defmodule UploadExampleWeb.AudioRecorder do
 
   @impl true
   def mount(socket) do
-    {:ok, socket |> allow_upload(:audio, accept: ~w"audio/*") |> assign(recording?: false),
-     layout: false}
+    {:ok,
+     socket
+     |> allow_upload(:audio, accept: ~w"audio/*", auto_upload: true)
+     |> assign(recording?: false), layout: false}
   end
 
   @impl true
