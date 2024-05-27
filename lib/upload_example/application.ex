@@ -9,11 +9,8 @@ defmodule UploadExample.Application do
   def start(_type, _args) do
     children = [
       UploadExampleWeb.Telemetry,
-      UploadExample.Repo,
       {DNSCluster, query: Application.get_env(:upload_example, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: UploadExample.PubSub},
-      # Start the Finch HTTP client for sending emails
-      {Finch, name: UploadExample.Finch},
       # Start a worker by calling: UploadExample.Worker.start_link(arg)
       # {UploadExample.Worker, arg},
       # Start to serve requests, typically the last entry

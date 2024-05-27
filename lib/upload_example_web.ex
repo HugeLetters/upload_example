@@ -30,29 +30,9 @@ defmodule UploadExampleWeb do
     end
   end
 
-  def channel do
-    quote do
-      use Phoenix.Channel
-    end
-  end
-
-  def controller do
-    quote do
-      use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: UploadExampleWeb.Layouts]
-
-      import Plug.Conn
-      import UploadExampleWeb.Gettext
-
-      unquote(verified_routes())
-    end
-  end
-
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {UploadExampleWeb.Layouts, :app}
+      use Phoenix.LiveView
 
       unquote(html_helpers())
     end
@@ -83,9 +63,6 @@ defmodule UploadExampleWeb do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
-      import UploadExampleWeb.CoreComponents
-      import UploadExampleWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
